@@ -1,0 +1,123 @@
+
+Quando se colocar nova tabela, seria para fazer o calculo por linhas, por cada linha  = TODAY () data Atual
+Clica em nova tabela e coloca a formula
+*Calcular a idade- Idade = int( (TODAY()- 'Funcionários'[Nascimento])/365)  
+
+Clacular ajuste de 0,05
+*Clica em nova tabela e coloca a formula
+Reajuste = 'Funcionários'[Salário]*1.05
+
+
+Quando você quer fazer um calculo de faturamento, Lucro, média, porcentagem.. Usa o o nova medida e não nova coluna
+
+Fazer o calculo da Soma salarial
+Total Salarial = SUM('Funcionários'[Reajuste])   - Soma = SUM
+
+Fazer o calculo da média salaria
+Média Salarial = AVERAGE('Funcionários'[Reajuste]  - Média  = Average
+
+Calular o Maior funcionário
+Maior Salário  = MAX('Funcionários'[Reajuste]   - Maior = MAx
+
+Calular o menor salário
+Menor Salário = MIN('Funcionários'[Reajuste]   - Menor= MIN
+
+Fazer a cotagem de matriculas     Contagem = count 
+Qt matriculas= COUNT('Funcionários'[Matricula]
+
+Fazer a cotagem de Demitidos  Contagem = count 
+Qt demitidos = COUNT('Funcionários'[Demissao]
+
+Fazer contagem de areas distintas   = Fazer contagem de areas distintas é a função DISTINCTCOUNT
+
+Qt áreas = Qt áreas = DISTINCTCOUNT('Funcionários'[Área])
+
+OBS: COUNT ELE CONTA TUDO E O DISTINCTCOUNT ELE CONTA UMA UNICA VEZ A INFORMAÇÃO REPETIDA 
+  
+Saber a qt de Alunos ativos
+
+Qt Ativos = 'Funcionários'[Qt matriculas]- [Qt demitidos]
+
+
+data atual = Today()
+Usuário= USERNAME()
+
+
+Extrair informação = Função letf (Começo)
+Sigla UF = LEFT([Código],2)
+
+Codigo consta na 1 coluna 
+AL-A-001  
+para colocar apenas as ciclas .
+Adicionar coluna e colocar a formula 
+
+Para extrair informação do meio
+Função = MID
+Cod_letra = MID([Código],4,1)
+
+
+Para extrair informação no final = RIGht
+Cod_num = RIGHT([Código],3)
+
+* &- Junção Simples
+Cod_Num_letra = [Cod_num]&[Cod_letra]
+
+E para colocar um limitador entre a junção ficaria 
+Cod_Num_letra = [Cod_num]&"-"&[Cod_letra]
+
+
+* Concatenate - junção de 2 colunas
+Siglas_cod = CONCATENATE([Cod_num],[Sigla UF]
+
+
+* Combinevales- Junção de várias colunas com delimitador - Para usar a função COMBINEVALUES, sempre é necessario usar o ("-", antes de combinar as colunas.
+(Unir texto)
+Sigla_Codletra_cod_num = COMBINEVALUES("-",[Siglas_cod],[Cod_letra],[Cod_num])
+
+
+* Upper- Converter para Maiúscula
+* Lower- Converter para Miniscula
+
+----------------------------------------
+Função DATEDIFF- Diferença entre duas datas- Tipo qts dias a pessoa ficou na empresa. 
+Pega a data de admissão, saida.
+
+(anos, dias, meses, trimestre, horas , semanas)
+Idade = DATEDIFF([Nascimento],UTCTODAY(),YEAR)
+--------------------------------
+
+Função Format= Mês Admissão = sempre colocar Entre aspasas ( "      ")
+
+(FORMAT([Data Admissão],"mmmm")  Para deixar em Maisculo= Mês Admissão = UPPER( FORMAT([Data Admissão],"mmmm"))
+
+DDDD- DIA DA SEMANA COMPLETO= Semana Admissão = FORMAT([Data Admissão],"dddd") e maisculo = Semana Admissão = UPPER( FORMAT([Data Admissão],"dddd"))
+DDD- ABREVIDADO
+
+MMMM- MES COMPLETO por extenso  (FORMAT([Data Admissão],"mmmm")
+MMM- MES ABREVIADO
+
+DD/MM/YYYY- DATA COMPLETO
+
+MMM/YYYY= Mês_Ano = FORMAT([Data Admissão],"mmm/yyyy")
+
+------------------------------
+Extair o numero do Mês= função MONTH
+Mês_Num = MONTH([Data Admissão]
+
+
+Dia da semana = função Weeday
+Dia Semana = WEEKDAY([Data Admissão])
+
+
+OBS: Para colocar em ordem, vc faz essa função acima, add uma nova coluna , depois clica na data e vai em classificar por coluna e seleciona a coluna que vc criou com a função ou Dia Semana = WEEKDAY([Data Admissão]) ou Mês_Num = MONTH([Data Admissão].
+ Assim seu grafico ficara em ordem ou de mes ou de semana.
+
+
+
+
+
+
+
+
+
+
